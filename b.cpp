@@ -4,13 +4,13 @@ int main()
 {
 	int a, b,m,n;
 	cin >> a >> b;
-	for (int i = 2; i <= a; i++)
+	for (int i = 1; i <= a; i++)
 	{
-		for (int j = 2; j <= b; j++)
+		for (int j = 1; j <= b; j++)
 		{
-			if (b%i == 0) 
+			if (b%j == 0) 
 			{
-				m = i;
+				m = j;
 				if (a%m == 0)
 				{
 					n = m;

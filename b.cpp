@@ -2,31 +2,24 @@
 using namespace std;
 int main() 
 {
-	int a, b,i,m=1;
+	int a, b,m,n;
 	cin >> a >> b;
-	for (i=a ;i<=b;i++)
+	for (int i = 2; i <= a; i++)
 	{
-		for (int j = 2; j <i; j++)
+		for (int j = 2; j <= b; j++)
 		{
-			if (i%j == 0)
+			if (b%i == 0) 
 			{
-				m = 0;
-				break;
-
-			}
-			else
-			{
-				m = 1;
-				continue;
-
+				m = i;
+				if (a%m == 0)
+				{
+					n = m;
+				}
 			}
 		}
-		if (m)
-		{
-			cout << i;
-			
-		}
+		
 	}
+	cout << n;
 	system("pause");
 	return 0;
 }

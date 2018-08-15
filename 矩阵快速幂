@@ -1,11 +1,10 @@
 //理解参考https://www.cnblogs.com/cmmdc/p/6936196.html
-//算法没错但，精度出错，大数问题。 
 #include<iostream>
 using namespace std;
 #define N 101
 #define mod 1000000007
 struct matrix{
-	long long z[N][N];
+	long long z[N][N];//此处必须为long long否则精度出错
 }ans,res;
 matrix initma(matrix a1,int n)//初始化数组 
 {

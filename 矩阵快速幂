@@ -1,0 +1,84 @@
+//理解参考https://www.cnblogs.com/cmmdc/p/6936196.html
+//算法没错但，精度出错，大数问题。 
+#include<iostream>
+using namespace std;
+#define N 101
+#define mod 1000000007
+struct matrix{
+	long long z[N][N];
+}ans,res;
+matrix initma(matrix a1,int n)//初始化数组 
+{
+	int i,j;
+	for(i=0;i<n;i++)
+	{
+	for(j=0;j<n;j++)
+	{
+		a1.z[i][j]=0;
+		if(i==j)
+		{
+			a1.z[i][j]=1;
+		}
+	 } 
+    } 
+    return a1;
+}
+matrix sums(matrix a1,matrix a2,int n)
+{
+	long long sum,i,j,l;
+	matrix a3;
+	for(i=0;i<n;i++)//知道矩阵乘法原理即可，找到变与不变 
+    {//i行 
+        for(l=0;l<n;l++)
+        {//j列 
+        	 sum=0;
+        for(j=0;j<n;j++)
+        {//自动变量j 
+            sum=(sum+a1.z[i][j]*a2.z[j][l]%mod)%mod;
+        }
+        a3.z[i][l]=sum;
+        }
+    }
+    return a3;
+ } 
+ matrix quickpow(matrix a1,matrix a2,int x,int n)
+ {
+ 	//a2=initma(a2,n);
+ 	a2=a1;
+ 	while(x)
+ 	{
+ 	  	if(x&1)
+ 	  	{
+ 	  	a1=sums(a1,a2,n);	
+		}
+		a2=sums(a2,a2,n);
+	    x=x>>1;
+	}
+ 	return a1;
+ }
+int main()
+{
+    long long n,m,i,j,l;
+    cin>>n;
+    cin>>m;//m次方 
+    matrix a,b;
+    //int a[n][n],b[n][n],c[n][n];
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            cin>>a.z[i][j];
+        }
+    }
+    a=quickpow(a,b,m-1,n);
+
+        for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            cout<<a.z[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}

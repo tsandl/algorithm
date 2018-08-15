@@ -1,0 +1,43 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n,i,j,l,sum;
+    cin>>n;
+    int a[n][n],b[n][n],c[n][n];
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            cin>>a[i][j];
+        }
+    }
+        for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            cin>>b[i][j];
+        }
+    }
+        for(i=0;i<n;i++)//知道矩阵乘法原理即可，找到变与不变 
+    {//i行 
+        for(l=0;l<n;l++)
+        {//j列 
+        	 sum=0;
+        for(j=0;j<n;j++)
+        {//自动变量j 
+            sum+=a[i][j]*b[j][l];
+        }
+        c[i][l]=sum;
+        }
+    }
+        for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            cout<<c[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}

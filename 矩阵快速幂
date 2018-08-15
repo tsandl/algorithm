@@ -40,7 +40,7 @@ matrix sums(matrix a1,matrix a2,int n)
     }
     return a3;
  } 
- matrix quickpow(matrix a1,matrix a2,int x,int n)
+ matrix quickpow(matrix a1,matrix a2,int x,int n)//快速幂
  {
  	//a2=initma(a2,n);
  	a2=a1;
@@ -51,7 +51,7 @@ matrix sums(matrix a1,matrix a2,int n)
  	  	a1=sums(a1,a2,n);	
 		}
 		a2=sums(a2,a2,n);
-	    x=x>>1;
+	    x=x>>1;//进位，例如19的二进制为10011，则19=1+2+16，即2的零次方+2的一次方+2的4次方
 	}
  	return a1;
  }
@@ -69,7 +69,7 @@ int main()
             cin>>a.z[i][j];
         }
     }
-    a=quickpow(a,b,m-1,n);
+    a=quickpow(a,b,m-1,n);//用m-1是因为在快速幂函数那没初始化好，会多剩一边。
 
         for(i=0;i<n;i++)
     {

@@ -1,0 +1,36 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+bool is_prime(int num)
+{
+int i;
+if(num==1)
+{
+return false;}
+else if(num==2)
+{
+return true;
+}else{
+for(i=2;i*i<num;i++)
+{
+if(num%i==0)
+return false;
+}
+}
+return true;
+}
+int main()
+{
+int n,m;
+cin>>n;
+while(n--)
+{
+cin>>m;
+if(is_prime(m))
+{
+cout<<"Yes"<<endl;
+}else
+cout<<"No"<<endl;
+}
+return 0;
+}

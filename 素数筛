@@ -71,7 +71,7 @@ void getPrime()
 
 		prime[cnt++] = i;
 
-		for(int j = 2 * i; j < MAXN; j += i)
+		for(int j = 2 * i; j < MAXN; j += i)//如18=12+6，24=18+6.......
 
 			isprime[j] = false;
 

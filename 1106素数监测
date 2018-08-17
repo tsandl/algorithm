@@ -1,3 +1,4 @@
+//最基本的方法
 #include<iostream>
 #include<cmath>
 using namespace std;

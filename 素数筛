@@ -30,3 +30,65 @@ int main()
 	 }
 	 return 0;
 }
+
+
+
+
+//法2
+#include<iostream>
+
+#include<cstring>
+
+using namespace std;
+
+ 
+
+const int MAXN = 500000;
+
+ 
+
+bool isprime[MAXN];
+
+int prime[MAXN];
+
+int cnt = 0;//保存素数个数
+
+void getPrime()
+
+{
+
+	for(int i = 1; i < MAXN; i++)
+
+		isprime[i] = true; //先假设所有数是素数，后面逐个扫描更新
+
+	for(int i = 2; i < MAXN; i++) //扫一遍
+
+	{
+
+		if(!isprime[i]) continue; //如果不是素数，则不往后面更新
+
+		
+
+		prime[cnt++] = i;
+
+		for(int j = 2 * i; j < MAXN; j += i)
+
+			isprime[j] = false;
+
+	}
+
+}
+
+ 
+
+int main()
+
+{
+
+	getPrime();
+
+	for(int i = 0; i < cnt; i++)
+
+		cout << prime[i] << endl;
+
+}

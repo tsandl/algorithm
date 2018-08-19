@@ -77,3 +77,28 @@ void yinzi(int n)//求出一个数的因子
 	 }
 	 cout<<m<<endl;
  }
+ 
+ 
+ //加强版
+ #include <iostream>
+#include <cstdio>
+#include <cmath>
+using namespace std;
+int main() {
+    int n ;
+    while(~scanf("%d",&n)){
+        int ans = n;
+        int tmp = n ;
+        int m = sqrt(n+0.5) ;
+        for( int i = 2 ; i <= m ;++i) {
+            if(n==1)break;
+            if(n%i==0){
+                ans = ans/i*(i-1) ;
+                while((n%i)==0) n/=i ;
+            }
+        }
+        if(n!=1)ans = ans/n*(n-1) ; // 至多有一个大素因子（可能为本身）
+        printf("%d\n",ans) ;
+    }
+    return 0 ;
+}

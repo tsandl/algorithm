@@ -1,0 +1,26 @@
+//超时版本，此处还没做大数处理。
+#include <iostream>
+#include <cstdio>
+#include <cmath>
+using namespace std;
+int main() {
+    int n ;
+    int sum=1;
+    scanf("%d",&n);
+    for(int j=n;j>1;j--){
+        int ans = j;
+        int tmp = j;
+        int m = sqrt(n+0.5) ;
+        for( int i = 2 ; i <= m ;++i) {
+            if(tmp==1)break;
+            if(tmp%i==0){
+                ans = ans/i*(i-1) ;
+                while((tmp%i)==0) tmp/=i ;
+            }
+        }
+        if(tmp!=1)ans = ans/tmp*(tmp-1) ; // 至多有一个大素因子（可能为本身）
+        sum+=ans;
+    }
+    printf("%d\n",sum);
+    return 0 ;
+}

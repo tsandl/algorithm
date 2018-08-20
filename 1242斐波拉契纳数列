@@ -1,0 +1,22 @@
+//超时版本
+#include <iostream>
+#include <cstdio>
+#include <cmath>
+using namespace std;
+#define maxn 1000000009
+int feibo(int n){
+    if(n==2||n==1){
+    	return 1;
+	}
+  if(n==0){
+  return 0;
+  }
+	return feibo(n-1)+feibo(n-2);
+ } 
+int main() {
+    int s,n;
+    cin>>n;
+    s=feibo(n);
+    cout<<s<<endl;
+    return 0;
+} 

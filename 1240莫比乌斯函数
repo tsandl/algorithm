@@ -1,0 +1,47 @@
+//在欧拉函数基础上稍微改进一点
+#include <iostream>
+#include <cstdio>
+#include <cmath>
+using namespace std;
+int main() {
+    int n ;
+    static int s=0;
+    int count;
+    while(~scanf("%d",&n)){
+        int ans = n;
+        int tmp = n ;
+        int sum=1;
+        int m = sqrt(n+0.5) ;
+        for( int i = 2 ; i <= m ;++i) {
+            if(n==1)break;
+            count=0;
+            if(n%i==0){
+                ans = ans/i*(i-1) ;
+                s++;
+                sum=sum*(-1);
+                while((n%i)==0) {
+                	n/=i ;
+                	count++;
+                	if(count==2)
+                	    break;
+				}
+            }
+            if(count==2)
+                  break;
+        }
+        if(n!=1){
+		ans = ans/n*(n-1);
+		s++;//算质因子个数 
+		} ; // 至多有一个大素因子（可能为本身）
+       // printf("%d\n",ans);
+       // cout<<" "<<s<<endl;
+        if(count==2){
+        //	cout<<count<<endl;
+        	cout<<0<<endl;
+        	return 0;
+		}else
+         // cout<<count<<endl;
+          cout<<pow(-1,s)<<endl;
+    }
+    return 0 ;
+}

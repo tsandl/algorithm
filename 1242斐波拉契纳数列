@@ -23,14 +23,15 @@ int main() {
 //快一点点
 #include<iostream>
 using namespace std;
+#define d 1000000009 
 int main(){
     int n;
     cin>>n;
     int a=0,b=1,c=0;
     for(int i=1;i<n;i++){
         c=a+b;
-        a=b;
-        b=c;
+        a=b%d;
+        b=c%d;
     }
     cout<<b<<endl;
     return 0;

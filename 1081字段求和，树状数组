@@ -1,0 +1,144 @@
+//常规方法，超时。
+#include<cstdio>
+#include<iostream>
+#include<cstring>
+#include<algorithm>
+using namespace std;
+#define maxs 100000
+typedef long long ll;
+int main(){
+    int n;
+    cin>>n;
+    ll a[n]={0};
+    for(int i=1;i<=n;i++){
+   	    cin>>a[i];
+    }
+	ll m;//查询数量
+	ll s,d;
+	cin>>m;
+	while(m--){
+	    ll sum=0;
+		cin>>s;
+		cin>>d;
+		while(d--){
+			sum+=a[s++];
+		}
+		cout<<sum<<endl;
+	} 
+	return 0;
+} 
+//树状数组
+
+#include <cstdio>
+
+long long c[50010];
+
+long long n,d;
+
+void update(long long i,long long d)
+
+{
+
+	while(i<=n)
+
+	{
+
+		c[i]=c[i]+d;
+
+		i=i+(i&(-i));
+
+	}
+
+}
+
+long long sum(long long i)
+
+{
+
+	long long tmp=0;
+
+	while(i>0)
+
+	{
+
+		tmp=tmp+c[i];
+
+		i=i-(i&(-i));
+
+	}
+
+	return tmp;
+
+}
+
+int main()
+
+{
+
+	scanf("%lld",&n);
+
+	for(long long i=1;i<=n;i++)
+
+	{
+
+		scanf("%lld",&d);
+
+		update(i,d);
+
+	}
+
+	long long q;
+
+	scanf("%lld",&q);
+
+	long long s,l;
+
+	while(q--)
+
+	{
+
+		scanf("%lld%lld",&s,&l);
+
+		printf("%lld\n",sum(s+l-1)-sum(s-1));
+
+	}
+
+	return 0;
+
+} 
+//其他方法
+#include <stdio.h>
+#include <string.h>
+#include <algorithm>
+#include <math.h>
+using namespace std;
+
+typedef long long LL;
+const int maxn = 5e5 + 10;
+const double PI = acos(-1.0);
+
+LL arr[maxn];
+
+int main()
+{
+	int n;
+	scanf("%d", &n);
+	LL sum = 0;
+	LL a;
+	arr[0] = 0;
+	for (int i = 1; i <= n; i++)
+	{
+		scanf("%lld", &a);
+		sum += a;
+		arr[i] = sum;
+	}
+	int q;
+	scanf("%d", &q);
+	while (q--)
+	{
+		int l, r;
+		scanf("%d%d", &l, &r);
+		printf("%lld\n", arr[l + r - 1] - arr[l - 1]);
+	}
+	return 0;
+}

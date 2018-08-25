@@ -1,0 +1,40 @@
+//若是输入一个数判断一次会造成数据重复判断，浪费时间。
+#include<cstdio>
+#include<iostream>
+#include<cstring>
+#include<algorithm>
+using namespace std;
+#define maxs 1000005
+typedef long long ll;
+ll a[maxs];
+int solve(ll i){
+	if(i%7==0){
+		return 1;
+	}
+	ll ans;
+	while(i){
+		ans=i%10;
+	    if(ans==7){
+				return 1;
+			}
+			i/=10;
+		}
+	return 0;
+}
+int main(){
+    ll n,m;
+	cin>>n;
+    int sum=0;
+    memset(a,0,sizeof(a));
+    for(ll i=1;i<=1000000;i++)//先将1000000之内的所有都算出来，省的下面输入一个数判断一次耗费时间 
+     {
+         if(!solve(i))
+        a[i]=a[i-1]+i*i;
+         else a[i]=a[i-1];
+     }
+    while(n--){
+    	cin>>m;
+    	cout<<a[m]<<endl;	
+    }
+	return 0;
+} 

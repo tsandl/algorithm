@@ -1,0 +1,18 @@
+//初步想法是找出一个数，然后拿那个数减去i的平方和判断这个结果是不是整数，如果含有小数点的画则不是，否则是。
+#include<iostream>
+#include<algorithm>
+using namespace std;
+int main(){
+	double q;
+	long long n,m,s;
+	cin>>n;
+	m=sqrt(n);
+	for(int i=1;i<=m+1;i++){
+		s=n-i*i;
+		q=sqrt(s);
+		if((int)q==q&&i<q){
+			cout<<i<<" "<<q<<endl;
+		}
+	}
+	return 0;
+}

@@ -3,7 +3,7 @@
 #include<algorithm>
 using namespace std;
 int main(){
-	long double q;
+	long double q，count=0;
 	long long n,m,s;
 	cin>>n;
 	m=sqrt(n);
@@ -12,7 +12,11 @@ int main(){
 		q=sqrt(s);
 		if((int)q==q&&i<=q){
 			cout<<i<<" "<<q<<endl;
+			cout++;
 		}
+	}
+	if(count==0){
+        cout<<"No solution"<<endl;
 	}
 	return 0;
 }

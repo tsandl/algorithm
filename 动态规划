@@ -3,7 +3,7 @@ https://blog.csdn.net/baidu_28312631/article/details/47418773
 
 
 
-1002 数塔取数问题
+一、1002 数塔取数问题
 //递归做法，存在重复计算，会超时
 #include<iostream>
 #include<algorithm>
@@ -138,4 +138,96 @@ int main(){
 		for( int j = 1; j <= i; ++j )         
 			maxSum[i][j] = max(maxSum[i+1][j],maxSum[i+1][j+1]) + D[i][j];    
 	cout << maxSum[1][1] << endl;  
+}
+
+
+
+
+
+二、1083矩阵取数
+法一、动态规划
+#include<iostream>
+#include<algorithm>
+#include<cmath>
+using namespace std;
+int n;
+#define m 501
+int a[m][m]={0};
+int b[m][m];
+int maxsum(int i,int j){
+	if(b[i][j]!=-1){
+		return b[i][j];
+	}
+	if(i==n){
+		return a[i][j];
+	}
+	int x=maxsum(i,j+1);
+	int y=maxsum(i+1,j);
+	b[i][j]=max(x,y)+a[i][j];
+	return b[i][j];
+}
+int main(){
+	int i,j;
+	cin>>n;
+
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			cin>>a[i][j];
+			b[i][j]=-1;
+		}
+	}
+    cout<<maxsum(0,0)<<endl;
+	return 0;
+}
+
+法二
+
+#include<iostream>
+#include<algorithm>
+#include<cmath>
+using namespace std;
+int n;
+#define m 501
+int a[m][m]={0};
+int b[m][m];
+//int maxsum(int i,int j){
+//	if(b[i][j]!=-1){
+//		return b[i][j];
+//	}
+//	if(i==n){
+//		return a[i][j];
+//	}
+//	int x=maxsum(i,j+1);
+//	int y=maxsum(i+1,j);
+//	b[i][j]=max(x,y)+a[i][j];
+//	return b[i][j];
+//}
+int main(){
+	int i,j;
+	cin>>n;
+
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			cin>>a[i][j];
+//			b[i][j]=-1;
+		}
+	}
+	
+	for(i=1;i<n;i++){
+		a[i][0]=a[i][0]+a[i-1][0];
+		a[0][i]=a[0][i]+a[0][i-1];
+	}
+	for(i=1;i<n;i++){
+	//	a[n-1][i]=a[n-1][i]+a[n-1][i-1];
+	    for(j=1;j<n;j++){
+	    	if(a[i-1][j]>a[i][j-1]){
+	    		a[i][j]+=a[i-1][j];
+			}else{
+				a[i][j]+=a[i][j-1];
+			}
+		}
+	}
+	
+    cout<<a[n-1][n-1]<<endl;
+	return 0;
 }

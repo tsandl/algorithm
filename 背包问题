@@ -1,16 +1,11 @@
 一、1007整数分组
+//转移方程f[v]=max{f[v],f[v-w[i]]+v[i]};
 #include <iostream>
 
 #include<bits/stdc++.h>
 
 using namespace std;
-
- 
-
 int d[11000],a[110];
-
- 
-
 int main()
 
 {

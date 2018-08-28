@@ -1,4 +1,7 @@
-一、1007整数分组
+//可参考https://blog.csdn.net/LYHVOYAGE/article/details/8545852
+//https://blog.csdn.net/mu399/article/details/7722810
+
+一、1007整数分组(01背包)
 //转移方程f[v]=max{f[v],f[v-w[i]]+v[i]};
 #include <iostream>
 

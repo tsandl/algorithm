@@ -38,4 +38,40 @@ int main()
         cout<<res<<endl;
     }
 
-
+1344走格子
+//找到局部最小值 
+#include<iostream>
+#include<cmath>
+#include<algorithm>
+#include<cmath> 
+using namespace std;
+typedef long long ll;
+bool cmp(const int & A, const int & B){
+    return A<B;             //如果修改为return A<B就还原为了升序排列
+}
+int main(){
+    ll n,i,sum=0,sum1=0;
+    cin>>n;
+    ll a[n],b[n];
+    for(i=0;i<n;i++){
+        cin>>a[i];
+    }
+//	sort(a,a+n,cmp);
+	for(i=0;i<n;i++){
+		sum+=a[i];
+		b[i]=sum;
+		sum1+=b[i];
+	}	
+	ll z=b[0];
+	for(i=1;i<n;i++){
+		if(z>=b[i]){
+			z=b[i];
+		}
+	}
+	if(z<0){
+		cout<<-z<<endl;
+	}else{
+		cout<<z<<endl;
+	}
+	return 0;
+} 

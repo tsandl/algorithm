@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cstring>
+#include <algorithm>
+#include <cstdio>
+#include<cmath>
+using namespace std;
+const int maxn = 1e3 + 5;
+int a[maxn];
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    for(int i = 1; i <= n; i++)
+    {
+        scanf("%d", &a[i]);
+    }
+    sort(a+1, a+1+n);
+    for(int i = 1; i <= n; i++)
+        for(int j = i+1; j <= n; j++)
+        {
+            int sum = -a[i]-a[j];
+            int l = j+1, r = n;
+            while(l < r)
+            {
+                if(a[l]+a[r] == sum)
+                {
+                    puts("Yes");
+                    return 0;
+                }
+                if(a[l]+a[r] > sum) r--;
+                else l++;
+            }
+        }
+    printf("No\n");
+    return 0;
+}
